@@ -1,0 +1,31 @@
+{
+  "newlywed": {
+    "label": "신혼부부 특별공급",
+    "requiredBooleans": ["is_married", "is_homeless_household"],
+    "incomeLimitPct": 140,
+    "notes": ["혼인기간, 자녀 여부, 자산 기준은 공고별로 추가 확인이 필요합니다."],
+    "evidenceKeys": ["housing-supply-rules", "lh-special-supply"]
+  },
+  "first_life": {
+    "label": "생애최초 특별공급",
+    "requiredBooleans": ["is_first_home_purchase", "is_homeless_household"],
+    "incomeLimitPct": 160,
+    "notes": ["소득세 납부 이력, 혼인/자녀 요건, 자산 기준은 공고별로 다를 수 있습니다."],
+    "evidenceKeys": ["housing-supply-rules", "lh-special-supply"]
+  },
+  "multi_child": {
+    "label": "다자녀 특별공급",
+    "requiredBooleans": ["is_homeless_household"],
+    "minimumChildren": 2,
+    "incomeLimitPct": null,
+    "notes": ["미성년 자녀 수와 거주지역 배점은 공고문 기준으로 확인해야 합니다."],
+    "evidenceKeys": ["housing-supply-rules", "lh-special-supply"]
+  },
+  "elderly_parent": {
+    "label": "노부모부양 특별공급",
+    "requiredBooleans": ["is_householder", "is_homeless_household"],
+    "incomeLimitPct": null,
+    "notes": ["피부양자 연령, 부양기간, 세대 구성 요건은 공고문 기준으로 확인해야 합니다."],
+    "evidenceKeys": ["housing-supply-rules", "lh-special-supply"]
+  }
+}

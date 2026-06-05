@@ -1,0 +1,26 @@
+{
+  "speculative": {
+    "label": "투기과열/규제지역",
+    "subscriptionMonths": 24,
+    "subscriptionPayments": 24,
+    "householderRequired": true,
+    "homelessRequired": true,
+    "evidenceKeys": ["housing-supply-rules", "subscription-home"]
+  },
+  "metro": {
+    "label": "수도권",
+    "subscriptionMonths": 12,
+    "subscriptionPayments": 12,
+    "householderRequired": false,
+    "homelessRequired": true,
+    "evidenceKeys": ["housing-supply-rules", "subscription-home"]
+  },
+  "non_metro": {
+    "label": "비수도권",
+    "subscriptionMonths": 6,
+    "subscriptionPayments": 6,
+    "householderRequired": false,
+    "homelessRequired": true,
+    "evidenceKeys": ["housing-supply-rules", "subscription-home"]
+  }
+}

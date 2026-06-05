@@ -1,0 +1,26 @@
+{
+  "housing-supply-rules": {
+    "title": "주택공급에 관한 규칙",
+    "publisher": "국가법령정보센터",
+    "url": "https://www.law.go.kr/법령/주택공급에관한규칙",
+    "note": "청약 자격의 최종 법적 기준은 최신 법령과 입주자모집공고문을 확인해야 합니다."
+  },
+  "subscription-home": {
+    "title": "청약Home",
+    "publisher": "한국부동산원",
+    "url": "https://www.applyhome.co.kr/",
+    "note": "청약 신청·자격 확인 공식 서비스입니다."
+  },
+  "lh-special-supply": {
+    "title": "LH 청약센터 특별공급 안내",
+    "publisher": "한국토지주택공사",
+    "url": "https://apply.lh.or.kr/",
+    "note": "공급유형별 세부 요건은 공고문별로 달라질 수 있습니다."
+  },
+  "announcement-required": {
+    "title": "입주자모집공고문 확인 필요",
+    "publisher": "각 사업주체/공공기관",
+    "url": null,
+    "note": "분양가, 납부 일정, 소득·자산·거주 요건은 개별 공고문이 우선합니다."
+  }
+}

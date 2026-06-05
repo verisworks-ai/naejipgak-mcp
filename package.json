@@ -1,0 +1,40 @@
+{
+  "name": "naejipgak-mcp",
+  "version": "0.1.0",
+  "description": "Local-first MCP server for Korean housing subscription eligibility checks",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "bin": {
+    "naejipgak-mcp": "./src/mcp-server.js"
+  },
+  "files": [
+    "src/",
+    "examples/",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "start": "node src/mcp-server.js",
+    "mcp": "node src/mcp-server.js",
+    "test": "node tests/rules.test.mjs",
+    "build": "node -e \"Promise.all([import('./src/mcp-server.js'), import('./src/engine/evaluator.js')]).then(() => process.exit(0))\"",
+    "pack:dry-run": "npm pack --dry-run"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "korea",
+    "housing",
+    "subscription",
+    "eligibility",
+    "청약",
+    "내집각"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

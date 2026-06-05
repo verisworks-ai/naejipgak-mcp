@@ -1,0 +1,14 @@
+{
+  "first_priority": {
+    "label": "민영주택 일반공급 1순위 기본 조건",
+    "description": "지역별 청약통장 가입기간, 납입횟수, 세대주/무주택 여부를 보조 판정합니다.",
+    "evidenceKeys": ["housing-supply-rules", "subscription-home"]
+  },
+  "funding": {
+    "label": "청약 자금 여력 추정",
+    "description": "분양가, 계약금·중도금 비율, 보유 현금 기준으로 부족액을 계산합니다.",
+    "defaultContractRate": 0.1,
+    "defaultMiddlePaymentRate": 0.6,
+    "evidenceKeys": ["announcement-required"]
+  }
+}

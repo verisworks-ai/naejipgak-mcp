@@ -1,0 +1,37 @@
+{
+  "eligible_newlywed_seoul": {
+    "region": "서울",
+    "data_basis": "kosis",
+    "region_type": "speculative",
+    "subscription_months": 30,
+    "subscription_payments": 30,
+    "is_householder": true,
+    "is_homeless_household": true,
+    "special_supply_type": "newlywed",
+    "is_married": true,
+    "household_size": 2,
+    "monthly_income_krw": 7000000,
+    "price_krw": 600000000,
+    "cash_krw": 450000000,
+    "official_source_checked": true,
+    "announcement_url": "https://example.go.kr/notice/2026-001",
+    "announcement_date": "2026-06-05",
+    "income_basis_year": 2026,
+    "asset_reviewed": true,
+    "extra_costs_reviewed": true
+  },
+  "needs_cash_scenario": {
+    "region": "부산",
+    "region_type": "non_metro",
+    "subscription_months": 8,
+    "subscription_payments": 8,
+    "is_householder": false,
+    "is_homeless_household": true,
+    "special_supply_type": "first_life",
+    "is_first_home_purchase": true,
+    "household_size": 1,
+    "monthly_income_krw": 5000000,
+    "price_krw": 500000000,
+    "cash_krw": 120000000
+  }
+}

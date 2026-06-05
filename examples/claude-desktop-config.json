@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "naejipgak": {
+      "command": "node",
+      "args": ["/absolute/path/to/naejipgak-mcp/src/mcp-server.js"],
+      "env": {
+        "KOSIS_API_KEY": "<your-kosis-api-key>",
+        "KOSIS_USER_STATS_ID": "<your-kosis-user-stats-id>"
+      }
+    }
+  }
+}
