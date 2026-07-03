@@ -1,12 +1,40 @@
+<p align="center">
+  <img src=".github/assets/naejipgak-mcp-logo.svg" alt="naejipgak-mcp" width="640">
+</p>
+
+<p align="center">
+  <a href="https://nodejs.org"><img alt="Node 18+" src="https://img.shields.io/badge/node-18+-green.svg"></a>
+  <a href="https://modelcontextprotocol.io"><img alt="MCP stdio" src="https://img.shields.io/badge/MCP-stdio-blue.svg"></a>
+  <a href="#5-설치--로컬-실행"><img alt="Local first" src="https://img.shields.io/badge/local--first-bundled%20rules-0F766E.svg"></a>
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+</p>
+
+<p align="center">
+  <a href="#1-이-mcp의-사용-구조">사용 구조</a> ·
+  <a href="#2-제공-mcp-도구">Tools</a> ·
+  <a href="#security-boundary">Security</a> ·
+  <a href="#1-how-this-mcp-is-used">English</a>
+</p>
+
+<p align="center">
+  <img src=".github/assets/naejipgak-mcp-hero.svg" alt="naejipgak-mcp repository overview" width="960">
+</p>
+
 # naejipgak-mcp
 
-> Korean README first. English README follows below.
+**MCP clients call tools such as check_eligibility, explain_rule, list_rules, and compare_scenarios to receive a JSON eligibility verdict.**
 
-내집각 청약 조건 확인용 로컬 우선 MCP 서버입니다. MCP 클라이언트(Claude Desktop, Codex, Hermes, Gemini, Cursor 등)가 `check_eligibility` 같은 도구를 호출하면, 이 서버가 청약 1순위·특별공급·소득조건·자금 여력·공식근거 확인 여부를 JSON으로 판정합니다.
+`naejipgak-mcp` runs Korean apartment subscription eligibility checks through local MCP stdio tools with bundled rules and optional KOSIS evidence.
 
-기본 모드는 **번들 룰(bundled_rules)** 입니다. 즉, DB·로그인·호스팅 서버·API 키 없이 로컬에서 바로 실행됩니다. KOSIS 키가 있으면 **KOSIS 공식 통계 근거를 사용하는 구조**로 설정할 수 있습니다.
+> One command. Structured evidence. Safer agent and launch workflows.
 
 ---
+
+## One-line result
+
+```text
+naejipgak-mcp = local-first MCP eligibility checks with bundled rules and optional KOSIS evidence
+```
 
 ## 1. 이 MCP의 사용 구조
 
@@ -267,6 +295,16 @@ naejipgak-mcp/
 ```
 
 ---
+
+## Security boundary
+
+```text
+Default execution: local stdio MCP server
+Bundled rules: available without database, login, hosting, or API key
+Optional official evidence: KOSIS credentials only when configured by the user
+Output: eligibility advisory JSON, not legal or financial advice
+Secret handling: never commit API keys or personal application data
+```
 
 ## 8. 중요 고지
 

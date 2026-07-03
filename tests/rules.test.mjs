@@ -86,10 +86,13 @@ child.stdout.on("data", (chunk) => {
 child.stdin.write(JSON.stringify({ jsonrpc: "2.0", id: 1, method: "initialize", params: {} }) + "\n");
 child.stdin.write(JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/list", params: {} }) + "\n");
 child.stdin.write(JSON.stringify({ jsonrpc: "2.0", id: 3, method: "tools/call", params: { name: "check_eligibility", arguments: { price_krw: 100000000, cash_krw: 80000000 } } }) + "\n");
-await new Promise((resolve) => setTimeout(resolve, 150));
+for (let i = 0; i < 20 && received.length < 3; i += 1) {
+  await new Promise((resolve) => setTimeout(resolve, 100));
+}
 child.kill();
 await once(child, "exit");
 
+assert.equal(received.length, 3);
 assert.equal(received[0].result.serverInfo.name, "naejipgak-mcp");
 assert.deepEqual(received[1].result.tools.map((tool) => tool.name), ["check_eligibility", "explain_rule", "list_rules", "compare_scenarios"]);
 const callPayload = JSON.parse(received[2].result.content[0].text);
