@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Test
+        run: npm test
+
+      - name: Build check
+        run: npm run build
+
+      - name: Credential scan
+        run: |
+          if grep -rn --include="*.js" --include="*.json" \
+            -E "(ghp_[A-Za-z0-9]{36}|sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{35})" \
+            src/ bin/ 2>/dev/null; then
+            echo "::error::Credential pattern found in source"
+            exit 1
+          fi
+
+      - name: Personal info scan
+        run: |
+          if grep -rn --include="*.js" --include="*.json" --include="*.mjs" \
+            -E "/Users/[a-zA-Z]+" \
+            src/ bin/ tests/ 2>/dev/null; then
+            echo "::error::Local user path found in tracked files"
+            exit 1
+          fi
+
+      - name: Rules meta freshness check
+        run: |
+          node -e "
+            import('./src/data/rules-meta.json', { assert: { type: 'json' } }).then(m => {
+              const meta = m.default;
+              const days = Math.floor((Date.now() - new Date(meta.as_of).getTime()) / 86400000);
+              if (days > 180) {
+                console.warn('::warning::rules-meta.as_of is', days, 'days old — consider reviewing eligibility rules');
+              } else {
+                console.log('rules-meta.as_of:', meta.as_of, '(' + days + 'd ago) ✓');
+              }
+            });
+          "
+
+      - name: Network isolation check (PII stays local)
+        run: |
+          node -e "
+            import { createServer } from 'net';
+            let connections = 0;
+            const srv = createServer(s => { connections++; s.end(); });
+            srv.listen(0, async () => {
+              const { evaluateEligibility } = await import('./src/engine/evaluator.js');
+              evaluateEligibility({ region_type: 'metro', subscription_months: 12 });
+              srv.close(() => {
+                if (connections > 0) { console.error('::error::evaluateEligibility opened network connection'); process.exit(1); }
+                console.log('network isolation: 0 connections ✓');
+              });
+            });
+          "

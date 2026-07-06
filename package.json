@@ -6,9 +6,11 @@
   "private": false,
   "license": "MIT",
   "bin": {
-    "naejipgak-mcp": "./src/mcp-server.js"
+    "naejipgak-mcp": "./src/mcp-server.js",
+    "naejipgak-mcp-check": "./bin/check.js"
   },
   "files": [
+    "bin/",
     "src/",
     "examples/",
     ".github/assets/",
