@@ -3,6 +3,7 @@ import generalSupplyRules from "../data/rules/general-supply.json" with { type: 
 import incomeLimits from "../data/rules/income-limits.json" with { type: "json" };
 import regulationAreaRules from "../data/rules/regulation-area.json" with { type: "json" };
 import sources from "../data/sources.json" with { type: "json" };
+import rulesMeta from "../data/rules-meta.json" with { type: "json" };
 import { ruleEvidence, disclaimer } from "./evidence.js";
 import { normalizeApplicant } from "./normalizer.js";
 import { officialApiStatus, publicApiReference } from "./official-api.js";
@@ -103,6 +104,14 @@ export function evaluateEligibility(input = {}) {
     official_data,
     checks,
     disclaimer: disclaimer(),
+    rules_meta: {
+      version: rulesMeta.version,
+      as_of: rulesMeta.as_of,
+      stale_warning: (() => {
+        const diffDays = Math.floor((Date.now() - new Date(rulesMeta.as_of).getTime()) / 86_400_000);
+        return diffDays > 90 ? `⚠️ 규칙 데이터가 ${diffDays}일 전 기준입니다. 최신 공고문을 확인하세요.` : null;
+      })(),
+    },
   };
 }
 

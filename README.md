@@ -189,9 +189,16 @@ export NAEJIPGAK_PUBLIC_DATA_BASE_URL="<legacy-base-url>"
     "api_key_configured": true,
     "user_stats_id_env": "KOSIS_USER_STATS_ID",
     "user_stats_id_configured": true
+  },
+  "rules_meta": {
+    "version": "2025-01",
+    "as_of": "2025-01-01",
+    "stale_warning": null
   }
 }
 ```
+
+`rules_meta.as_of`: 번들된 규칙의 기준 날짜. `stale_warning`은 기준일로부터 90일 초과 시 경고 문구를 포함합니다.
 
 ---
 
