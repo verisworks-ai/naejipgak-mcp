@@ -6,6 +6,11 @@ on:
   pull_request:
 
 jobs:
+  security:
+    uses: verisworks-ai/.github/.github/workflows/security-baseline.yml@main
+    with:
+      language: node
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -20,24 +25,6 @@ jobs:
 
       - name: Build check
         run: npm run build
-
-      - name: Credential scan
-        run: |
-          if grep -rn --include="*.js" --include="*.json" \
-            -E "(ghp_[A-Za-z0-9]{36}|sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{35})" \
-            src/ bin/ 2>/dev/null; then
-            echo "::error::Credential pattern found in source"
-            exit 1
-          fi
-
-      - name: Personal info scan
-        run: |
-          if grep -rn --include="*.js" --include="*.json" --include="*.mjs" \
-            -E "/Users/[a-zA-Z]+" \
-            src/ bin/ tests/ 2>/dev/null; then
-            echo "::error::Local user path found in tracked files"
-            exit 1
-          fi
 
       - name: Rules meta freshness check
         run: |
